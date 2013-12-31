@@ -61,6 +61,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]
                                        initWithTarget:self
                                        action:@selector(handleLongPressGesture:)];
+        [(UILongPressGestureRecognizer *)_longPressGestureRecognizer setMinimumPressDuration:0.3f];
         [_collectionView addGestureRecognizer:_longPressGestureRecognizer];
         
         _panPressGestureRecognizer = [[UIPanGestureRecognizer alloc]
@@ -255,7 +256,9 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             self.layoutHelper.fromIndexPath = indexPath;
             self.layoutHelper.hideIndexPath = indexPath;
             self.layoutHelper.toIndexPath = indexPath;
+            
             [self.collectionView.collectionViewLayout invalidateLayout];
+            
         } break;
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled: {
@@ -263,9 +266,16 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
                 return;
             }
             
+            // Need these for later, but need to nil out layoutHelper's references sooner
+            NSIndexPath *fromIndexPath = self.layoutHelper.fromIndexPath;
+            NSIndexPath *toIndexPath = self.layoutHelper.toIndexPath;
+            id<UICollectionViewDataSource_Draggable> dataSource = (id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource;
+            
             if (self.deletable && !CGRectIntersectsRect(mockCell.frame, CGRectMake(0, 0, self.collectionView.contentSize.width, self.collectionView.contentSize.height))) {
                 // Tell the data source to delete the item
-                [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource collectionView:self.collectionView deleteItemAtIndexPath:self.layoutHelper.fromIndexPath];
+                if ([dataSource respondsToSelector:@selector(collectionView:deleteItemAtIndexPath:)]) {
+                    [dataSource collectionView:self.collectionView deleteItemAtIndexPath:fromIndexPath];
+                }
                 
                 // Detele the item
                 [self.collectionView performBatchUpdates:^{
@@ -280,24 +290,34 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
                  animations:^{
                      mockCell.transform = CGAffineTransformMakeScale(0.001f, 0.001f);
                  } completion:^(BOOL finished) {
-                     [mockCell removeFromSuperview];
-                     mockCell = nil;
-                     self.layoutHelper.hideIndexPath = nil;
-                     [self.collectionView.collectionViewLayout invalidateLayout];
+                     if (finished) {
+                         [mockCell removeFromSuperview];
+                         mockCell = nil;
+                         self.layoutHelper.hideIndexPath = nil;
+                         [self.collectionView.collectionViewLayout invalidateLayout];
+                         
+                         if ([dataSource respondsToSelector:@selector(collectionView:didDeleteItemAtIndexPath:)]) {
+                             [dataSource collectionView:self.collectionView didDeleteItemAtIndexPath:fromIndexPath];
+                         }
+                     }
                  }];
             }
             else {
                 // Tell the data source to move the item
-                [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource collectionView:self.collectionView
-                                                                                     moveItemAtIndexPath:self.layoutHelper.fromIndexPath
-                                                                                             toIndexPath:self.layoutHelper.toIndexPath];
+                [dataSource collectionView:self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
                 
                 // Move the item
                 [self.collectionView performBatchUpdates:^{
-                    [self.collectionView moveItemAtIndexPath:self.layoutHelper.fromIndexPath toIndexPath:self.layoutHelper.toIndexPath];
+                    [self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
                     self.layoutHelper.fromIndexPath = nil;
                     self.layoutHelper.toIndexPath = nil;
-                } completion:nil];
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        if ([dataSource respondsToSelector:@selector(collectionView:didMoveItemAtIndexPath:toIndexPath:)]) {
+                            [dataSource collectionView:self.collectionView didMoveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+                        }
+                    }
+                }];
                 
                 // Switch mock for cell
                 UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:self.layoutHelper.hideIndexPath];
