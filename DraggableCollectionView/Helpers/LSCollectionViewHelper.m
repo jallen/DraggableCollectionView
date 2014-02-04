@@ -271,38 +271,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             NSIndexPath *toIndexPath = self.layoutHelper.toIndexPath;
             id<UICollectionViewDataSource_Draggable> dataSource = (id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource;
             
-            if (self.deletable && !CGRectIntersectsRect(mockCell.frame, CGRectMake(0, 0, self.collectionView.contentSize.width, self.collectionView.contentSize.height))) {
-                // Tell the data source to delete the item
-                if ([dataSource respondsToSelector:@selector(collectionView:deleteItemAtIndexPath:)]) {
-                    [dataSource collectionView:self.collectionView deleteItemAtIndexPath:fromIndexPath];
-                }
-                
-                // Detele the item
-                [self.collectionView performBatchUpdates:^{
-                    [self.collectionView deleteItemsAtIndexPaths:@[self.layoutHelper.fromIndexPath]];
-                    self.layoutHelper.fromIndexPath = nil;
-                    self.layoutHelper.toIndexPath = nil;
-                } completion:nil];
-                
-                // Remove mock for cell
-                [UIView
-                 animateWithDuration:0.3
-                 animations:^{
-                     mockCell.transform = CGAffineTransformMakeScale(0.001f, 0.001f);
-                 } completion:^(BOOL finished) {
-                     if (finished) {
-                         [mockCell removeFromSuperview];
-                         mockCell = nil;
-                         self.layoutHelper.hideIndexPath = nil;
-                         [self.collectionView.collectionViewLayout invalidateLayout];
-                         
-                         if ([dataSource respondsToSelector:@selector(collectionView:didDeleteItemAtIndexPath:)]) {
-                             [dataSource collectionView:self.collectionView didDeleteItemAtIndexPath:fromIndexPath];
-                         }
-                     }
-                 }];
-            }
-            else {
+            void (^moveItemBlock)() = ^void() {
                 // Tell the data source to move the item
                 [dataSource collectionView:self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
                 
@@ -333,6 +302,53 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
                      self.layoutHelper.hideIndexPath = nil;
                      [self.collectionView.collectionViewLayout invalidateLayout];
                  }];
+                
+            };
+            
+            if (self.deletable &&
+                !CGRectIntersectsRect(mockCell.frame, CGRectMake(0, 0, self.collectionView.contentSize.width, self.collectionView.contentSize.height))) {
+                
+                if ([dataSource respondsToSelector:@selector(collectionView:shouldDeleteItemAtIndexPath:completion:)]) {
+                    [dataSource collectionView:self.collectionView shouldDeleteItemAtIndexPath:fromIndexPath completion:^(BOOL shouldDelete) {
+                        if (shouldDelete) {
+                            // Tell the data source to delete the item
+                            if ([dataSource respondsToSelector:@selector(collectionView:deleteItemAtIndexPath:)]) {
+                                [dataSource collectionView:self.collectionView deleteItemAtIndexPath:fromIndexPath];
+                            }
+                            
+                            // Detele the item
+                            [self.collectionView performBatchUpdates:^{
+                                [self.collectionView deleteItemsAtIndexPaths:@[self.layoutHelper.fromIndexPath]];
+                                self.layoutHelper.fromIndexPath = nil;
+                                self.layoutHelper.toIndexPath = nil;
+                            } completion:nil];
+                            
+                            // Remove mock for cell
+                            [UIView
+                             animateWithDuration:0.3
+                             animations:^{
+                                 mockCell.transform = CGAffineTransformMakeScale(0.001f, 0.001f);
+                             } completion:^(BOOL finished) {
+                                 if (finished) {
+                                     [mockCell removeFromSuperview];
+                                     mockCell = nil;
+                                     self.layoutHelper.hideIndexPath = nil;
+                                     [self.collectionView.collectionViewLayout invalidateLayout];
+                                     
+                                     if ([dataSource respondsToSelector:@selector(collectionView:didDeleteItemAtIndexPath:)]) {
+                                         [dataSource collectionView:self.collectionView didDeleteItemAtIndexPath:fromIndexPath];
+                                     }
+                                 }
+                             }];
+                        }
+                        else {
+                            moveItemBlock();
+                        }
+                    }];
+                }
+            }
+            else {
+                moveItemBlock();
             }
             
             // Reset
