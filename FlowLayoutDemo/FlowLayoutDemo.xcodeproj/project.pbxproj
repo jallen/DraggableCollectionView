@@ -19,15 +19,13 @@
 		8E947CB7175458980077D957 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CB6175458980077D957 /* Default@2x.png */; };
 		8E947CB9175458980077D957 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CB8175458980077D957 /* Default-568h@2x.png */; };
 		8E947CC2175458980077D957 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CC1175458980077D957 /* ViewController.m */; };
-		8E947CD31754593B0077D957 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CCE1754593B0077D957 /* UICollectionView+Draggable.m */; };
 		8E947CD817545AF10077D957 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CD51754598E0077D957 /* Cell.m */; };
-		8E947CDC17545C100077D957 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CDB17545C100077D957 /* DraggableCollectionViewFlowLayout.m */; };
-		8E947CE217545C370077D957 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CDF17545C370077D957 /* LSCollectionViewHelper.m */; };
-		8E947CE317545C370077D957 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CE117545C370077D957 /* LSCollectionViewLayoutHelper.m */; };
 		8E955E881793ADF5008F72D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E955E871793ADF5008F72D9 /* QuartzCore.framework */; };
+		FC4612708EAF41D7BC94D80E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F148AFFAF5BD4389B4288FA9 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F2CE7D0E0B449CABA9DC0A8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8E11CC4C1759BB55004D2284 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E11CC4F1759BB5E004D2284 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		8E11CC511759BB5E004D2284 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -45,19 +43,10 @@
 		8E947CB8175458980077D957 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8E947CC0175458980077D957 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8E947CC1175458980077D957 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8E947CCD1754593B0077D957 /* UICollectionView+Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Draggable.h"; sourceTree = "<group>"; };
-		8E947CCE1754593B0077D957 /* UICollectionView+Draggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Draggable.m"; sourceTree = "<group>"; };
-		8E947CCF1754593B0077D957 /* UICollectionViewDataSource_Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewDataSource_Draggable.h; sourceTree = "<group>"; };
-		8E947CD01754593B0077D957 /* UICollectionViewLayout_Warpable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLayout_Warpable.h; sourceTree = "<group>"; };
 		8E947CD41754598E0077D957 /* Cell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		8E947CD51754598E0077D957 /* Cell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
-		8E947CDA17545C100077D957 /* DraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		8E947CDB17545C100077D957 /* DraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		8E947CDE17545C370077D957 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
-		8E947CDF17545C370077D957 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
-		8E947CE017545C370077D957 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
-		8E947CE117545C370077D957 /* LSCollectionViewLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewLayoutHelper.m; sourceTree = "<group>"; };
 		8E955E871793ADF5008F72D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F148AFFAF5BD4389B4288FA9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +58,7 @@
 				8E947CA5175458980077D957 /* Foundation.framework in Frameworks */,
 				8E947CA7175458980077D957 /* CoreGraphics.framework in Frameworks */,
 				8E955E881793ADF5008F72D9 /* QuartzCore.framework in Frameworks */,
+				FC4612708EAF41D7BC94D80E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +71,7 @@
 				8E947CA8175458980077D957 /* FlowLayoutDemo */,
 				8E947CA1175458980077D957 /* Frameworks */,
 				8E947CA0175458980077D957 /* Products */,
+				0F2CE7D0E0B449CABA9DC0A8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +90,7 @@
 				8E947CA4175458980077D957 /* Foundation.framework */,
 				8E947CA6175458980077D957 /* CoreGraphics.framework */,
 				8E955E871793ADF5008F72D9 /* QuartzCore.framework */,
+				F148AFFAF5BD4389B4288FA9 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,7 +106,6 @@
 				8E947CC1175458980077D957 /* ViewController.m */,
 				8E947CD41754598E0077D957 /* Cell.h */,
 				8E947CD51754598E0077D957 /* Cell.m */,
-				8E947CC81754593B0077D957 /* DraggableCollectionView */,
 				8E947CA9175458980077D957 /* Supporting Files */,
 			);
 			path = FlowLayoutDemo;
@@ -134,39 +125,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8E947CC81754593B0077D957 /* DraggableCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				8E947CDD17545C370077D957 /* Helpers */,
-				8E947CD917545C100077D957 /* Layout */,
-				8E947CCD1754593B0077D957 /* UICollectionView+Draggable.h */,
-				8E947CCE1754593B0077D957 /* UICollectionView+Draggable.m */,
-				8E947CCF1754593B0077D957 /* UICollectionViewDataSource_Draggable.h */,
-				8E947CD01754593B0077D957 /* UICollectionViewLayout_Warpable.h */,
-			);
-			path = DraggableCollectionView;
-			sourceTree = SOURCE_ROOT;
-		};
-		8E947CD917545C100077D957 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				8E947CDA17545C100077D957 /* DraggableCollectionViewFlowLayout.h */,
-				8E947CDB17545C100077D957 /* DraggableCollectionViewFlowLayout.m */,
-			);
-			path = Layout;
-			sourceTree = "<group>";
-		};
-		8E947CDD17545C370077D957 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				8E947CDE17545C370077D957 /* LSCollectionViewHelper.h */,
-				8E947CDF17545C370077D957 /* LSCollectionViewHelper.m */,
-				8E947CE017545C370077D957 /* LSCollectionViewLayoutHelper.h */,
-				8E947CE117545C370077D957 /* LSCollectionViewLayoutHelper.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E947CC5175458980077D957 /* Build configuration list for PBXNativeTarget "FlowLayoutDemo" */;
 			buildPhases = (
+				7A1D612051874613971C188E /* Check Pods Manifest.lock */,
 				8E947C9B175458980077D957 /* Sources */,
 				8E947C9C175458980077D957 /* Frameworks */,
 				8E947C9D175458980077D957 /* Resources */,
+				75CA04ECF12A4E099AF1E4B5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,6 +189,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		75CA04ECF12A4E099AF1E4B5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A1D612051874613971C188E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E947C9B175458980077D957 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -238,10 +231,6 @@
 				8E947CB3175458980077D957 /* AppDelegate.m in Sources */,
 				8E947CC2175458980077D957 /* ViewController.m in Sources */,
 				8E947CD817545AF10077D957 /* Cell.m in Sources */,
-				8E947CD31754593B0077D957 /* UICollectionView+Draggable.m in Sources */,
-				8E947CDC17545C100077D957 /* DraggableCollectionViewFlowLayout.m in Sources */,
-				8E947CE217545C370077D957 /* LSCollectionViewHelper.m in Sources */,
-				8E947CE317545C370077D957 /* LSCollectionViewLayoutHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +324,7 @@
 		};
 		8E947CC6175458980077D957 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F2CE7D0E0B449CABA9DC0A8 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlowLayoutDemo/FlowLayoutDemo-Prefix.pch";
@@ -347,6 +337,7 @@
 		};
 		8E947CC7175458980077D957 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F2CE7D0E0B449CABA9DC0A8 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlowLayoutDemo/FlowLayoutDemo-Prefix.pch";

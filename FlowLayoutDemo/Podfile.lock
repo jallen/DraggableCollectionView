@@ -1,0 +1,17 @@
+PODS:
+  - DraggableCollectionView (0.0.1):
+    - RCKit
+  - RCKit (0.1.0)
+
+DEPENDENCIES:
+  - DraggableCollectionView (from `../DraggableCollectionView.podspec`)
+
+EXTERNAL SOURCES:
+  DraggableCollectionView:
+    :path: ../DraggableCollectionView.podspec
+
+SPEC CHECKSUMS:
+  DraggableCollectionView: 4cfd3ab7011b8f5a18d2818dc746bab822aac0a1
+  RCKit: d51888a178c7e5966c559ece1f6750f039f88315
+
+COCOAPODS: 0.29.0
