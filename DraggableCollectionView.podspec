@@ -10,9 +10,9 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/jallen/DraggableCollectionView"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author             = { "Jared Allen" => "jared@redcact.us" }
-  s.authors          = { "Jared Allen" => "jared@redcact.us", "Luke Scott" => "luke@webconnex.com" }
-  s.platform     = :ios, '5.0'
+  s.author       = { "Jared Allen" => "jared@redcact.us" }
+  s.authors      = { "Jared Allen" => "jared@redcact.us", "Luke Scott" => "luke@webconnex.com" }
+  s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source       = { :git => "https://github.com/jallen/DraggableCollectionView.git", :tag => "0.0.1" }
@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.public_header_files = 'DraggableCollectionView/**/*.h'
 
   s.frameworks = 'CoreGraphics', 'QuartzCore'
-  s.dependency 'RCKit'
+  s.dependency 'RCKit/UIImage'
 end
